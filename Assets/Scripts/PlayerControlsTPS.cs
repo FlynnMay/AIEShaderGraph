@@ -82,6 +82,8 @@ public class PlayerControlsTPS : MonoBehaviour
     {
         GroundCheck();
         Moving();
+
+        lockCameraPosition = Cursor.lockState != CursorLockMode.Locked;
     }
 
     void LateUpdate()

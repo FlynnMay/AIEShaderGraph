@@ -51,6 +51,7 @@ public class InputManagerTPS : MonoBehaviour
     {
         run = runState;
     }
+    
     #endregion
 
     #region Functions Created For Connecting To Unity Input System
@@ -85,6 +86,11 @@ public class InputManagerTPS : MonoBehaviour
     {
         RunInput(a_value.isPressed);
     }
+    
+    public void OnCursorStateChange()
+    {
+        SetCursorState(!cursorLocked);
+    }
     #endregion
 
     void OnApplicationFocus(bool focus)
@@ -95,5 +101,6 @@ public class InputManagerTPS : MonoBehaviour
     void SetCursorState(bool state)
     {
         Cursor.lockState = state ? CursorLockMode.Locked : CursorLockMode.None;
+        cursorLocked = Cursor.lockState == CursorLockMode.Locked;
     }
 }
