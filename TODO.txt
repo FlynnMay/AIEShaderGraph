@@ -1,0 +1,5 @@
+[ ] Gun that follows animations (animation rigging)
+[ ] UI press to change material
+[ ] UI press to toggle paritcles
+[ ] Polish animation transitions
+[ ] Escape menu -> quit button
