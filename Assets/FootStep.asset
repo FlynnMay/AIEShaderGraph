@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6857ec3d4278a8a4cadfdc36ed43372d, type: 3}
+  m_Name: FootStep
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 1876081050882714, guid: b099c516251f4da4d83f18b7d7cc0f06, type: 3}
+  duration: 1
+  autoStop: 1
+  detach: 1
+  colors:
+  - {r: 1, g: 1, b: 1, a: 1}
+  clip: {fileID: 8300000, guid: ac495f6b1abbbd244bdc85b5c7c757fa, type: 3}
