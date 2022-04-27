@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 public class InputManagerTPS : MonoBehaviour
@@ -13,6 +14,9 @@ public class InputManagerTPS : MonoBehaviour
     public bool aim;
     public bool shoot;
     public bool run;
+    public bool pause;
+
+    public UnityEvent<bool> onPause;
 
     public bool movement;
 
@@ -52,6 +56,13 @@ public class InputManagerTPS : MonoBehaviour
         run = runState;
     }
     
+    public void RunPause()
+    {
+        pause = !pause;
+        onPause?.Invoke(pause);
+        SetCursorState(!pause);
+    }
+    
     #endregion
 
     #region Functions Created For Connecting To Unity Input System
@@ -85,6 +96,11 @@ public class InputManagerTPS : MonoBehaviour
     public void OnRun(InputValue a_value)
     {
         RunInput(a_value.isPressed);
+    }
+    
+    public void OnPause()
+    {
+        RunPause();
     }
     
     public void OnCursorStateChange()
