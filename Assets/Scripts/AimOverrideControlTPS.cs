@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Cinemachine;
+using UnityEngine.Animations.Rigging;
 
 public class AimOverrideControlTPS : MonoBehaviour
 {
@@ -41,7 +42,10 @@ public class AimOverrideControlTPS : MonoBehaviour
     [Tooltip("Provide a bullet to be spawned")]
     GameObject bulletPrefab;
 
+    [Header("Rigging")]
     public Transform aimMarkerTransform;
+    public MultiAimConstraint bodyAimRig;
+    public MultiAimConstraint aimRig;
 
     PlayerControlsTPS controller;
     InputManagerTPS input;
@@ -91,8 +95,11 @@ public class AimOverrideControlTPS : MonoBehaviour
             aimCam.gameObject.SetActive(true);
             controller.SetCamSensitivitty(aimCamSensitivity);
             controller.SetRotateOnMove(false);
-            animator.SetLayerWeight(1, Mathf.Lerp(animator.GetLayerWeight(1), 1f, Time.deltaTime * animationLayerTransitionRate));
             
+            animator.SetLayerWeight(1, Mathf.Lerp(animator.GetLayerWeight(1), 1f, Time.deltaTime * animationLayerTransitionRate));
+            bodyAimRig.weight = Mathf.Lerp(bodyAimRig.weight, 1f, Time.deltaTime * animationLayerTransitionRate);
+            aimRig.weight = Mathf.Lerp(aimRig.weight, 1f, Time.deltaTime * animationLayerTransitionRate);
+
             Vector3 aimTarget = mouseWorldPos;
             aimTarget.y = transform.position.y;
             Vector3 aimDir = (aimTarget - transform.position).normalized;
@@ -105,6 +112,8 @@ public class AimOverrideControlTPS : MonoBehaviour
             controller.SetCamSensitivitty(camSensitivity); 
             controller.SetRotateOnMove(true);
             animator.SetLayerWeight(1, Mathf.Lerp(animator.GetLayerWeight(1), 0f, Time.deltaTime * animationLayerTransitionRate));
+            bodyAimRig.weight = Mathf.Lerp(bodyAimRig.weight, 0f, Time.deltaTime * animationLayerTransitionRate);
+            aimRig.weight = Mathf.Lerp(aimRig.weight, 0f, Time.deltaTime * animationLayerTransitionRate);
         }
     }
 }
