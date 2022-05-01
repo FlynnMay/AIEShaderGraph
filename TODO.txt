@@ -2,4 +2,4 @@
 [x] UI press to change material
 [x] UI press to toggle paritcles
 [x] Polish animation transitions
-[ ] Escape menu -> quit button
+[x] Escape menu -> quit button
